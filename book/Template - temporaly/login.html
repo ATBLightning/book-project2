@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block content %}
+<body>
+<br/>
+<br/>
+<H1><center>Login User</center></H1>
+<br\>
+<style>
+    input[type=submit] {
+    width: 10em;  height: 2.4em;
+}
+</style>
+<form method="post">
+    <center>
+    {% csrf_token %}
+    <H3>{{ user }}</H3>
+    <br />
+    <H3>{{ pass }}</H3><br\>
+    <input class="btn btn-info" type="submit" value="Login" size="12">
+    <a href="/register" class="btn btn-info">Register</a>
+    </center>
+</form>
+
+<br/>
+
+{% if messages %}
+{% for message in messages %}
+<style>
+.alert {
+padding: 20px;
+background-color: #f44336;
+color: white;
+}
+
+.closebtn {
+margin-left: 15px;
+color: white;
+font-weight: bold;
+float: right;
+font-size: 22px;
+line-height: 20px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.closebtn:hover {
+color: black;
+}
+</style>
+<div class="alert">
+    <center><strong>{{ message }}</strong>&nbsp;Please check your Username or Password agian!</center>
+</div>
+{% endfor %}
+{% endif %}
+
+</body>
+{% endblock %}
